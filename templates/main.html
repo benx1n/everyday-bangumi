@@ -27,7 +27,7 @@
 }
 </style>
 <body style="background-color: #bed2b7;">
-    <p style="font-size: 100; font-family: chinese_font;text-align: center; color: #52584e;"><b>今日番剧</b></p>
+    <p style="font-size: 100; font-family: chinese_font;text-align: center; color: #52584e;"><b>{{ title }}番剧</b></p>
     {% for each in data1 %}
         <div style="background-color: #f7ede3;height: 600; width: 1160; margin-top: 20; margin-bottom: 40; margin-left: 20; margin-right: 20">
             {% if loop.index % 2 == 1 %}
@@ -37,9 +37,9 @@
             <div class="img-right"><img src="{{ each['imgUrl'] }}" height="600px" width="450px"></div>
             <div class="intro-left">
             {% endif %}
-                <div style="height: 20%;"></div>
+                <div style="height: 15%;"></div>
                 <div style="text-align: center;">
-                    <p style="font-size: 60; font-family: chinese_font;text-align: center; color: #52584e;"><b>{{ each['cnName'] }}</b></p>
+                    <p style="font-size: 55; font-family: chinese_font;text-align: center; color: #52584e;"><b>{{ each['cnName'] }}</b></p>
                     <div style="height: 5%;"></div>
                     <table class="table" style="font-size: 25;text-align: left; table-layout: fixed;">
                         <tr>
