@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 from .html_render import html_to_pic
 from .browser import get_new_page
 from .utils import bytes2b64,match_keywords
-from .data_source import weekday,weekday_cn,today
+from .data_source import weekday,weekday_cn
 
 sv_help = '''发送开启 everyday_bangumi，每日晚自动推送当日番剧'''
 sv = Service('everyday-bangumi', enable_on_default=True,help_ = sv_help)
@@ -32,7 +32,7 @@ headers = {
 async def send_today_bangumi(bot, ev: CQEvent):
     text = str(ev.message).split()
     if not text:
-        weekday_int = today
+        weekday_int = datetime.now().weekday() + 1
     else:
         weekday_int,text = await match_keywords(text,weekday)
         if not weekday_int:
@@ -42,14 +42,14 @@ async def send_today_bangumi(bot, ev: CQEvent):
     img = await get_today_bangumi(weekday_int)
     await bot.send(ev,str(MessageSegment.image(bytes2b64(img))))
 
-@sv.scheduled_job('cron',hour='0')
+@sv.scheduled_job('cron', hour='0', minute='01')
 async def auto_send_daily_bangumi():
 #@sv.on_prefix("推送今日番剧")
 #async def auto_send_daily_bangumi(bot, ev: CQEvent):
     img = await get_today_bangumi()
     await sv.broadcast(str(MessageSegment.image(bytes2b64(img))), 'auto_send_daily_bangumi', 2)
 
-async def get_today_bangumi(weekday = today):
+async def get_today_bangumi(weekday = datetime.now().weekday() + 1):
     try:
         data1,data2 = [],[]             #有图片/没图片
         async with httpx.AsyncClient(headers=headers) as client:
