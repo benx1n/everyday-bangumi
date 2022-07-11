@@ -14,7 +14,7 @@ from .browser import get_new_page
 from .utils import bytes2b64,match_keywords
 from .data_source import weekday,weekday_cn
 
-sv_help = '''发送开启 everyday_bangumi，每日晚自动推送当日番剧'''
+sv_help = '''发送开启 everyday_bangumi，每日凌晨自动推送当日番剧'''
 sv = Service('everyday-bangumi', enable_on_default=True,help_ = sv_help)
 
 dir_path = Path(__file__).parent
@@ -28,7 +28,7 @@ headers = {
 }
 
 
-@sv.on_prefix("查询番剧")
+@sv.on_prefix("每日番剧")
 async def send_today_bangumi(bot, ev: CQEvent):
     try:
         text = str(ev.message).split()
@@ -39,7 +39,6 @@ async def send_today_bangumi(bot, ev: CQEvent):
             if not weekday_int:
                 await bot.send(ev,"格式不正确哦，请跟随周一至周日或今天")
                 return
-        print(weekday_int)
         img = await get_today_bangumi(weekday_int)
         await bot.send(ev,str(MessageSegment.image(bytes2b64(img))))
     except Exception:
