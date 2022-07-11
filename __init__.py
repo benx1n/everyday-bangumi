@@ -30,25 +30,29 @@ headers = {
 
 @sv.on_prefix("查询番剧")
 async def send_today_bangumi(bot, ev: CQEvent):
-    text = str(ev.message).split()
-    if not text:
-        weekday_int = datetime.now().weekday() + 1
-    else:
-        weekday_int,text = await match_keywords(text,weekday)
-        if not weekday_int:
-            await bot.send(ev,"格式不正确哦，请跟随周一至周日或今天")
-            return
-    print(weekday_int)
-    img = await get_today_bangumi(weekday_int)
-    await bot.send(ev,str(MessageSegment.image(bytes2b64(img))))
+    try:
+        text = str(ev.message).split()
+        if not text:
+            weekday_int = datetime.now().weekday() + 1
+        else:
+            weekday_int,text = await match_keywords(text,weekday)
+            if not weekday_int:
+                await bot.send(ev,"格式不正确哦，请跟随周一至周日或今天")
+                return
+        print(weekday_int)
+        img = await get_today_bangumi(weekday_int)
+        await bot.send(ev,str(MessageSegment.image(bytes2b64(img))))
+    except Exception:
+        traceback.print_exc()
+        await bot.send(ev,'wuwuwu~出了点问题')
 
-@sv.scheduled_job('cron', hour='0', minute='01')
+@sv.scheduled_job('cron', hour='0', minute='00')
 async def auto_send_daily_bangumi():
 #@sv.on_prefix("推送今日番剧")
 #async def auto_send_daily_bangumi(bot, ev: CQEvent):
-    img = await get_today_bangumi()
+    img = await get_today_bangumi(datetime.now().weekday() + 1)
     await sv.broadcast(str(MessageSegment.image(bytes2b64(img))), 'auto_send_daily_bangumi', 2)
-
+  
 async def get_today_bangumi(weekday = datetime.now().weekday() + 1):
     try:
         data1,data2 = [],[]             #有图片/没图片
