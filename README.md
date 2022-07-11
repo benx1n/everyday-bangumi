@@ -16,7 +16,7 @@
 - 凌晨自动推送当日番剧
 ## 预览
 <div align="left">
-  <img src="https://benx1n.oss-cn-beijing.aliyuncs.com/img/everyday-bangumi.png" width="300" />
+  <img src="https://benx1n.oss-cn-beijing.aliyuncs.com/img/everyday-bangumi_small.png" width="300" />s
 </div>
 
 ## 感谢
