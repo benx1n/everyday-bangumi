@@ -103,9 +103,6 @@ async def get_today_bangumi(weekday = datetime.now().weekday() + 1):
                                 count = 0
                                 for each in playWeb:
                                     playWeb_list.append(each.string)
-                                    count += 1
-                                    if count == 5:
-                                        break
                                 each_data1['playWeb'] = playWeb_list
                                 break
             data = {
