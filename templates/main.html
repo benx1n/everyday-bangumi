@@ -1,151 +1,198 @@
-<!--DOCTYPE html-->
+<!DOCTYPE html>
 <html>
-<head>
-    <title>everyday-bangumi</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link href="{{ template_path }}\bootstrap.css" rel="stylesheet">
-    <link href="{{ template_path }}\main.css" rel="stylesheet">
-    <meta charset="utf-8">
-</head>
-<style>
-.img-left{
-    float:left;
-    width:38%;
-}
-.img-right{
-    float:right;
-    width:38%;
-}
-.intro-left{
-    float:right;
-    width:62%;
-}
-.intro-right{
-    float:right;
-    width:62%;
-}
-</style>
-<body style="background-color: #bed2b7;">
-    <p style="font-size: 100; font-family: chinese_font;text-align: center; color: #52584e;"><b>{{ title }}番剧</b></p>
-    {% for each in data1 %}
-        <div style="background-color: #f7ede3;height: 600; width: 1160; margin-top: 20; margin-bottom: 40; margin-left: 20; margin-right: 20">
-            {% if loop.index % 2 == 1 %}
-            <div class="img-left"><img src="{{ each['imgUrl'] }}" height="600px" width="450px"></div>
-            <div class="intro-right">
-            {% else %}
-            <div class="img-right"><img src="{{ each['imgUrl'] }}" height="600px" width="450px"></div>
-            <div class="intro-left">
-            {% endif %}
-                <div style="height: 15%;"></div>
-                <div style="text-align: center;">
-                    <p style="font-size: 55; font-family: chinese_font;text-align: center; color: #52584e;"><b>{{ each['cnName'] }}</b></p>
-                    <div style="height: 5%;"></div>
-                    <table class="table" style="font-size: 25;text-align: left; table-layout: fixed;">
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="4">播出时间（日本）</td>
-                            <td colspan="4">{{ each['jpTime'] }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="4">播出时间（中国）</td>
-                            <td colspan="4">{{ each['cnTime'] }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="4">开播日期</td>
-                            <td colspan="4">{{ each['startTime'] }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="4">播出平台</td>
-                            <td colspan="4">
-                                {% for web in each['playWeb'] %}
-                                    {{ web }}</br>
-                                {% endfor %}
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-    {% for each in data2 %}
-        <div style="background-color: #f7ede3;height: 600; width: 1160; margin-top: 20; margin-bottom: 40; margin-left: 20; margin-right: 20">
-            <div style="height: 20%;"></div>
-            <div style="text-align: center;">
-                <p style="font-size: 60; font-family: chinese_font;text-align: center; color: #52584e;"><b>{{ each['cnName'] }}</b></p>
-                <div style="height: 5%;"></div>
-                <table class="table" style="font-size: 25;text-align: left; table-layout: fixed;">
-                    <tr>
-                        <td colspan="2"></td>
-                        <td colspan="4">播出时间（日本）</td>
-                        <td colspan="4">{{ each['jpTime'] }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td colspan="4">播出时间（中国）</td>
-                        <td colspan="4">{{ each['cnTime'] }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td colspan="4">开播日期</td>
-                        <td colspan="4">{{ each['startTime'] }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td colspan="4">播出平台</td>
-                        <td colspan="4">
-                            {% for web in each['playWeb'] %}
-                                {{ web }}</br>
-                            {% endfor %}
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    {% endfor %}
-    <!--div class="col-sm-6" style="background-color: #bed2b7;">
-    <div style="background-color: #f7ede3;height: 438; margin-top: 10; margin-bottom: 20;">
-        <div class="col-sm-4" style="padding: 0;">
-            <img src="https://lain.bgm.tv/pic/cover/l/ff/e5/327606_Q11Sq.jpg"  class=" col-sm-12" style="padding: 0;">
-        </div>
-        <div class="col-sm-8">
-        <div style="height: 20%;"></div>
-        <div style="text-align: center;">
-            <p style="font-size: 50; font-family: chinese_font;text-align: center; color: #52584e;"><b>杜鹃的婚约</b></p>
-        </div>
-        <table class="table" style="text-align: left; table-layout: fixed;">
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="4">播出时间（日本）</td>
-                <td colspan="4">周日 00:30</td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="4">播出时间（中国）</td>
-                <td colspan="4">暂无</td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="4">开播日期</td>
-                <td colspan="4">2022-04-24</td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="4">播出平台</td>
-                <td colspan="4">哔哩哔哩（港澳台）<br/>哔哩哔哩（港澳台）
-                </td>
-            </tr>
-          
-        </table>
-        </div>
+	<head>
+		<meta charset="utf-8">
+		<link href="{{ template_path }}\main.css" rel="stylesheet">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		body {
+			background-color: #bed2b7;
+		}
+		
+		.main-content {
+			width: 1200px;
+			text-align: center;
+		}
+		
+		.title {
+			font-size: 100px;
+			font-family: chinese_font;
+			font-weight:bold;
+			text-align: center;
+			color: #52584e;
+			padding: 20px 0;
+		}
+		
+		.item-content {
+			width: 1200px;
+			margin-bottom: 25px;
+		}
+		
+		.item {
+			display: flex;
+			height: 600px;
+			background-color: #f7ede3;
+			margin: 25px 30px;
+		}
+		
+		.img {
+			height: 600px;
+			width: 450px;
+		}
+		
+		.item img {
+			height: 600px;
+			width: 450px;
+		}
+		
+		.text {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.text-title {
+			font-size: 55px;
+			font-family: chinese_font;
+			font-weight:bold;
+			text-align: center;
+			color: #52584e;
+			margin-bottom: 25px;
+		}
+		
+		.dep {
+			display: flex;
+			font-size: 25px;
+			margin: 8px 100px;
+			text-align: left;
+		}
+		
+		.dep2 {
+			display: flex;
+			font-size: 25px;
+			margin: 8px 250px;
+			text-align: left;
+		}
+		
+		.left {
+			flex: 1;
+			display: inline-block;
+		}
+		
+		.right {
+			flex: 1;
+			display: inline-block;
+			text-align: right;
+		}
+	</style>
+	<body>
+		<div class="main-content">
+			<div class="title">{{ title }}番剧</div>
+			<div class="item-content">
+			{% for each in data1 %}
+				{% if loop.index % 2 == 1 %}
+				<div class="item">
+					<div class="img">
+						<img src="{{ each['imgUrl'] }}"/>
+					</div>
+					<div class="text">
+						<div style="flex: 1;"></div>
+						<div class="text-title">{{ each['cnName'] }}</div>
+						<div class="jp-time dep">
+							<div class="left">播出时间（日本）</div>
+							<div class="right">{{ each['jpTime'] }}</div>
+						</div>
+						<div class="cn-time dep">
+							<div class="left">播出时间（中国）</div>
+							<div class="right">{{ each['cnTime'] }}</div>
+						</div>
+						<div class="date dep">
+							<div class="left">开播时间</div>
+							<div class="right">{{ each['startTime'] }}</div>
+						</div>
+						<div class="platform dep">
+							<div class="left">播出平台</div>
+							<div class="right">
+								{% for web in each['playWeb'] %}
+								<div>{{ web }}</div>
+								{% endfor %}
+							</div>
+						</div>
+						<div style="flex: 1;"></div>
+					</div>
+				</div>
+				{% else %}
+				<div class="item">
+					<div class="text">
+						<div style="flex: 1;"></div>
+						<div class="text-title">{{ each['cnName'] }}</div>
+						<div class="jp-time dep">
+							<div class="left">播出时间（日本）</div>
+							<div class="right">{{ each['jpTime'] }}</div>
+						</div>
+						<div class="cn-time dep">
+							<div class="left">播出时间（中国）</div>
+							<div class="right">{{ each['cnTime'] }}</div>
+						</div>
+						<div class="date dep">
+							<div class="left">开播时间</div>
+							<div class="right">{{ each['startTime'] }}</div>
+						</div>
+						<div class="platform dep">
+							<div class="left">播出平台</div>
+							<div class="right">
+								{% for web in each['playWeb'] %}
+								<div>{{ web }}</div>
+								{% endfor %}
+							</div>
+						</div>
+						<div style="flex: 1;"></div>
+					</div>
+					<div class="img">
+						<img src="{{ each['imgUrl'] }}"/>
+					</div>
+				</div>
+				{% endif %}
+			{% endfor %}
+				
+			{% for each in data2 %}
+				<div class="item">
+					<div class="text">
+						<div style="flex: 1;"></div>
+						<div class="text-title">{{ each['cnName'] }}</div>
+						<div class="jp-time dep2">
+							<div class="left">播出时间（日本）</div>
+							<div class="right">{{ each['jpTime'] }}</div>
+						</div>
+						<div class="cn-time dep2">
+							<div class="left">播出时间（中国）</div>
+							<div class="right">{{ each['cnTime'] }}</div>
+						</div>
+						<div class="date dep2">
+							<div class="left">开播时间</div>
+							<div class="right">{{ each['startTime'] }}</div>
+						</div>
+						<div class="platform dep2">
+							<div class="left">播出平台</div>
+							<div class="right">
+								{% for web in each['playWeb'] %}
+								<div>{{ web }}</div>
+								{% endfor %}
+							</div>
+						</div>
+						<div style="flex: 1;"></div>
+					</div>
+				</div>
+			{% endfor %}
 
-    </div-->
-    
-</div>
-
-</body>
-
+			</div>
+		</div>
+		
+	</body>
 </html>
